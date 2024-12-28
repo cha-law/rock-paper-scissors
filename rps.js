@@ -1,8 +1,3 @@
-// VARIABLES
-
-let humanScore = 0;
-let computerScore = 0;
-
 // FUNCTIONS
 
 // Returns rock, paper or scissors.
@@ -63,6 +58,9 @@ function playRound(humanChoice, computerChoice) {
 // Function to start the game.
 function playGame() {
 
+    let humanScore = 0;
+    let computerScore = 0;
+
     // Loops the code 5 times.
     for (let i = 1; i < 6; i++) {
 
@@ -86,6 +84,16 @@ function playGame() {
             console.log("Something went wrong.")
         }
     }
+
+    // The end of the game: collecting the scores and declaring a winner.
+    if (humanScore === computerScore) {
+        console.log(`It was a draw. Good game.\nYou got ${humanScore} points.\nThe computer got ${computerScore} points.`)
+    } else if (humanScore > computerScore) {
+        console.log(`You are the winner! Well done.\nYou got ${humanScore} points.\nThe computer got ${computerScore} points.`)
+    } else {
+        console.log(`You lost. Better luck next time.\nYou got ${humanScore} points.\nThe computer got ${computerScore} points.`)
+    }
+
 }
 
 // Running the game.
