@@ -73,6 +73,10 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
+function checkWin(result) {
+    
+}
+
 // Function to start the game.
 function playGame() {
 
@@ -90,7 +94,7 @@ function playGame() {
 
     document.onclick = function(event) {
 
-        if (i < 5) {
+        if ((i < 5) || (endingGame === false)) {
             let humanChoice = getHumanChoice(event.target)
             if (humanChoice === "INVALID") {
                 return;
@@ -113,12 +117,12 @@ function playGame() {
                 }
                 document.querySelector(".round-text").textContent = `Round ${i}.`;
                 i++;
+                if (i > 5) {
+                    document.querySelector(".round-text").textContent = `End of game.`;
+                    endingGame = true;
+                    endGame(humanScore, computerScore);
+                }
             }
-
-        } else if (endingGame === false) {
-            document.querySelector(".round-text").textContent = `End of game.`;
-            endingGame = true;
-            endGame(humanScore, computerScore);
         }
     }
 }
