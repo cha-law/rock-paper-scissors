@@ -1,6 +1,14 @@
 // FUNCTIONS
 
-// Returns rock, paper or scissors.
+function resetGame() {
+    document.querySelector(".outcome-text").textContent = `Welcome to RPS!`;
+    document.querySelector(".round-text").textContent = `Round 0.`;
+    document.querySelector(".human-score").textContent = "0 points";
+    document.querySelector(".computer-score").textContent = "0 points";
+    document.querySelector(".human-img").src = "./images/icons8-human-96.png";
+    document.querySelector(".computer-img").src = "./images/icons8-robot-96.png";
+}
+
 function getComputerChoice() { 
     let comImage = document.querySelector(".computer-img")
     result = Math.random() * 3
@@ -16,7 +24,6 @@ function getComputerChoice() {
     }
 }
 
-// Returns choice from the user.
 function getHumanChoice(target) {
     let humanImage = document.querySelector(".human-img")
     if ((target === document.querySelector("#rock")) || (target.parentNode === document.querySelector("#rock"))) {
@@ -33,7 +40,6 @@ function getHumanChoice(target) {
     }
 }
 
-// Plays one round of RPS.
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) { // Checking for a draw before other checks.
         return "DRAW";
@@ -118,12 +124,14 @@ function playGame() {
 function endGame(humanScore, computerScore) {
     // The end of the game: collecting the scores and declaring a winner.
     if (humanScore === computerScore) {
-        document.querySelector(".outcome-text").textContent = `It was a draw. Good game.`;
+        document.querySelector(".outcome-text").textContent = `It was a draw. Restarting in 5 seconds...`;
     } else if (humanScore > computerScore) {
-        document.querySelector(".outcome-text").textContent = `You are the winner!`;
+        document.querySelector(".outcome-text").textContent = `You are the winner! Restarting in 5 seconds...`;
     } else {
-        document.querySelector(".outcome-text").textContent = `You are a loser!`;
+        document.querySelector(".outcome-text").textContent = `You are a loser! Restarting in 5 seconds...`;
     }
+
+    setTimeout(() => { playGame(); resetGame(); }, 5000);
     return;
 }
 
