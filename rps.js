@@ -76,6 +76,8 @@ function playRound(humanChoice, computerChoice) {
 // Function to start the game.
 function playGame() {
 
+    let endingGame = false;
+
     let humanScore = 0;
     let computerScore = 0;
     
@@ -89,9 +91,14 @@ function playGame() {
     document.onclick = function(event) {
 
         if (i >= 5) {
-            document.querySelector(".round-text").textContent = `Final round.`;
-            endGame(humanScore, computerScore);
-            return;
+            if (endingGame === false) {
+                endingGame = true;
+                document.querySelector(".round-text").textContent = `Final round.`;
+                endGame(humanScore, computerScore);
+                return;
+            } else {
+                return;
+            }
         }
 
         let humanChoice = getHumanChoice(event.target)
