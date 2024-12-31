@@ -2,10 +2,6 @@
 
 Simple rock paper scissors for The Odin Project.
 
-Image Credit:
+All images from Icons8 (Windows 11 Filled): https://icons8.com
 
-Lime Stone icon by Icons8: https://icons8.com
-Paper Waste icon by Icons8 : https://icons8.com
-Scissors icon by Icons8: https://icons8.com
-Robot Icon by Icons8: https://icons8.com
-Human Icon by Icons8: https://icons8.com
+Lime Stone icon, Paper Waste icon, Scissors icon, Robot icon, Human icon.
