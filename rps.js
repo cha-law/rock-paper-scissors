@@ -90,17 +90,6 @@ function playGame() {
 
     document.onclick = function(event) {
 
-        if (i >= 5) {
-            if (endingGame === false) {
-                endingGame = true;
-                document.querySelector(".round-text").textContent = `Final round.`;
-                endGame(humanScore, computerScore);
-                return;
-            } else {
-                return;
-            }
-        }
-
         let humanChoice = getHumanChoice(event.target)
 
         if (humanChoice === "INVALID") {
@@ -122,8 +111,20 @@ function playGame() {
             } else {
                 console.log("Something went wrong.");
             }
+
+            if (i >= 5) {
+                if (endingGame === false) {
+                    endingGame = true;
+                    endGame(humanScore, computerScore);
+                } else {
+                    return;
+                }
+            }
+
             document.querySelector(".round-text").textContent = `Round ${i}.`;
             i++;
+
+
         }
     }
 }
