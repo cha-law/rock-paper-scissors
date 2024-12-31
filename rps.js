@@ -73,10 +73,6 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-function checkWin(result) {
-    
-}
-
 // Function to start the game.
 function playGame() {
 
