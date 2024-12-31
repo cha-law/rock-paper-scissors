@@ -90,41 +90,35 @@ function playGame() {
 
     document.onclick = function(event) {
 
-        let humanChoice = getHumanChoice(event.target)
-
-        if (humanChoice === "INVALID") {
-            return;
-        } else {
-            result = playRound(humanChoice, getComputerChoice());
-
-            // Checking the win condition, and outputting the corresponding message.
-            if (result === "WIN") {
-                outcomeText.textContent = `You won!`;
-                humanScore++;
-                document.querySelector(".human-score").textContent = String(humanScore + " points");
-            } else if (result === "LOSE") {
-                outcomeText.textContent = `You lost.`;
-                computerScore++;
-                document.querySelector(".computer-score").textContent = String(computerScore + " points");
-            } else if (result === "DRAW") {
-                outcomeText.textContent = "It's a draw!";
+        if (i < 5) {
+            let humanChoice = getHumanChoice(event.target)
+            if (humanChoice === "INVALID") {
+                return;
             } else {
-                console.log("Something went wrong.");
-            }
+                result = playRound(humanChoice, getComputerChoice());
 
-            if (i >= 5) {
-                if (endingGame === false) {
-                    endingGame = true;
-                    endGame(humanScore, computerScore);
+                // Checking the win condition, and outputting the corresponding message.
+                if (result === "WIN") {
+                    outcomeText.textContent = `You won!`;
+                    humanScore++;
+                    document.querySelector(".human-score").textContent = String(humanScore + " points");
+                } else if (result === "LOSE") {
+                    outcomeText.textContent = `You lost.`;
+                    computerScore++;
+                    document.querySelector(".computer-score").textContent = String(computerScore + " points");
+                } else if (result === "DRAW") {
+                    outcomeText.textContent = "It's a draw!";
                 } else {
-                    return;
+                    console.log("Something went wrong.");
                 }
+                document.querySelector(".round-text").textContent = `Round ${i}.`;
+                i++;
             }
 
-            document.querySelector(".round-text").textContent = `Round ${i}.`;
-            i++;
-
-
+        } else if (endingGame === false) {
+            document.querySelector(".round-text").textContent = `End of game.`;
+            endingGame = true;
+            endGame(humanScore, computerScore);
         }
     }
 }
